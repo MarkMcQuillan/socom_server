@@ -5,7 +5,7 @@ import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
 
-public interface GuestRepository extends CrudRepository<Guest, String> {
+public interface GuestRepository extends CrudRepository<Guest, Integer> {
 
 
 }

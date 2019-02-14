@@ -1,5 +1,6 @@
 package com.lit.event.planner.events.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.sun.javafx.beans.IDProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -8,7 +9,6 @@ import lombok.NoArgsConstructor;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
-
 // TODO: Modify to be an entity
 // TODO: Extend with required columns/properties
 

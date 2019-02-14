@@ -17,6 +17,9 @@ public class Feedback {
     private @Id() @Column(name="feedback_id") @GeneratedValue(strategy = GenerationType.IDENTITY) int id;
     private @Column(name="feedback_title") String content;
     private @Column(name="feedback_rating") double rating;
+    private @Column(name="feedback_event") int event;
+    private @Column(name="feedback_user") String user;
+
 
 
 }

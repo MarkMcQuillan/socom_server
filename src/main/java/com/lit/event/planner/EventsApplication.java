@@ -12,6 +12,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.Optional;
 
@@ -37,12 +38,13 @@ public class EventsApplication {
 				showEmployees(employeeRepository);
 				*/
 
-				Event testEvent = new Event("Whatever", "Cosmo",new Date(), "We are getting food at Cosmo", 21.00);
-				addEvent(eventService, testEvent);
+				Event testEvent = new Event("Whatever", "Cosmo", new Date(), "We are getting food at Cosmo", 21.00);
+				System.out.println(testEvent);
+				//addEvent(eventService, testEvent);
 
 
 				//displayEvents(eventRepository);
-				displaySingleEvent(eventRepository, 1);
+				//displaySingleEvent(eventRepository, 1);
 			}
 		};
 	}

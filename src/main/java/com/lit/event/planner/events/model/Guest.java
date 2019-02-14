@@ -1,5 +1,9 @@
 package com.lit.event.planner.events.model;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -8,47 +12,15 @@ import java.util.Date;
 
 @Entity
 @Table(name = "guest")
+@Data
+@AllArgsConstructor
+@NoArgsConstructor
 public class Guest {
 
-    private String firstName;
-    private String lastName;
-    private int guestID;
-    private Date createdOn;
+    private @Id() @Column(name="guest_id") int guestID;
+    private @Column(name="first_name") String firstName;
+    private @Column(name="last_name") String lastName;
+    private @Column(name="created_on")Date createdOn;
 
-    @Column
-    public String getFirstName() {
-        return firstName;
-    }
 
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    @Column
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    @Id
-    @Column
-    public int getGuestID() {
-        return guestID;
-    }
-
-    public void setGuestID(int guestID) {
-        this.guestID = guestID;
-    }
-
-    @Column
-    public Date getCreatedOn() {
-        return createdOn;
-    }
-
-    public void setCreatedOn(Date createdOn) {
-        this.createdOn = createdOn;
-    }
 }

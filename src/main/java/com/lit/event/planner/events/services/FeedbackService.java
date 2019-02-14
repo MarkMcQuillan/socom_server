@@ -33,6 +33,11 @@ public class FeedbackService {
         feedbackRepository.save(feedback);
     }
 
+    //deletes feedback
+    public void deleteFeedback(int id){
+        feedbackRepository.deleteById(id);
+    }
+
 
 
 }
