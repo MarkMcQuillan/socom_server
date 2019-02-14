@@ -13,7 +13,7 @@ public class FeedbackNotFoundAdvice {
     @ResponseBody
     @ExceptionHandler(EventNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String eventNotFoundHandler(FeedbackNotFoundException ex) {
+    String feedbackNotFoundHandler(FeedbackNotFoundException ex) {
         return ex.getMessage();
     }
 

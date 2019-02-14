@@ -1,6 +1,5 @@
 package com.lit.event.planner.events.exception;
 
-import com.lit.event.planner.events.model.EventRegistration;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -8,13 +7,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
 @ControllerAdvice
-public class EventRegistrationNotFoundAdvice {
+public class GuestNotFoundAdvice {
+
 
 
     @ResponseBody
-    @ExceptionHandler(EventRegistrationNotFoundException.class)
+    @ExceptionHandler(GuestNotFoundException.class)
     @ResponseStatus(HttpStatus.NOT_FOUND)
-    String eventRegistrationNotFoundHandler(EventRegistrationNotFoundException ex) {
+    String guestNotFoundHandler(GuestNotFoundException ex) {
         return ex.getMessage();
     }
 
