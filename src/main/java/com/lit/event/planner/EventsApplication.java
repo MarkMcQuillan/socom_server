@@ -3,15 +3,16 @@ package com.lit.event.planner;
 import com.lit.event.planner.events.EventRepository;
 import com.lit.event.planner.events.model.Event;
 import com.lit.event.planner.events.services.EventService;
-import com.lit.event.planner.security.data.EmployeeRepository;
-import com.lit.event.planner.security.exception.EmployeeNotFoundException;
-import com.lit.event.planner.security.model.Employee;
-import com.lit.event.planner.security.services.EmployeeService;
+import com.lit.event.planner.employees.data.EmployeeRepository;
+import com.lit.event.planner.employees.exceptions.EmployeeNotFoundException;
+import com.lit.event.planner.employees.model.Employee;
+import com.lit.event.planner.employees.services.EmployeeService;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 
+import java.util.Date;
 import java.util.Optional;
 
 @SpringBootApplication
@@ -36,30 +37,30 @@ public class EventsApplication {
 				showEmployees(employeeRepository);
 				*/
 
-				Event testEvent = new Event("Dinner at BSQuare", "Brooklyn Square",34.00, "2019/12/12", "We are getting food at Brooklyn Square");
+				Event testEvent = new Event("Whatever", "Cosmo",new Date(), "We are getting food at Cosmo", 21.00);
 				addEvent(eventService, testEvent);
 
 
-				displayEvents(eventRepository);
-				//displaySingleEvent(eventRepository, 1);
+				//displayEvents(eventRepository);
+				displaySingleEvent(eventRepository, 1);
 			}
 		};
 	}
 
-	public void showEmployees(EmployeeRepository employeeRepository){
-		Iterable<Employee> employees = employeeRepository.findAll();
-
-		for(Employee e: employees) {
-			System.out.printf("\t[%s] %s [%s] %s \n",e.getEmployeeId(), e.getEmail(), e.getCreatedOn(), e.isSocomMember());
-		}
-
-	}
+//	public void showEmployees(EmployeeRepository employeeRepository){
+//		Iterable<Employee> employees = employeeRepository.findAll();
+//
+//		for(Employee e: employees) {
+//			System.out.printf("\t[%s] %s [%s] %s \n",e.getEmployeeId(), e.getEmail(), e.getCreatedOn(), e.isSocomMember());
+//		}
+//
+//	}
 
 	public void displayEvents(EventRepository eventRepository){
 		Iterable<Event> events = eventRepository.findAll();
 
 		for(Event e: events){
-			System.out.printf("\t[%s] %s [%d] %s [%.2f] %s \n", e.getLocale(), e.getInfo(), e.getID(), e.getDate(), e.getGuestFee(), e.getTitle());
+			System.out.printf("\t[%s] %s [%d] %s [%.2f] %s \n", e.getLocale(), e.getInfo(), e.getId(), e.getDate(), e.getGuestFee(), e.getTitle());
 		}
 	}
 
@@ -74,29 +75,29 @@ public class EventsApplication {
 	public void addEvent(EventService eventService, Event newEvent){
 		eventService.addEvent(newEvent);
 	}
-	public void showSingleEmployee (EmployeeRepository employeeRepository, String id){
-		Optional <Employee> employee = employeeRepository.findById(id);
-		if (employee.isPresent()){
-			System.out.println(employee.get().getEmail());
-		}
-		else {
-			new EmployeeNotFoundException(id);
-		}
-
-	}
-
-	public void addNewEmployee(Employee employee, EmployeeService employeeService){
-		employeeService.addEmployee(employee);
-	}
-
-	public void updateEmployee(EmployeeRepository employeeRepository, EmployeeService employeeService){
-
-	}
-
-	public void deleteEmployee(String id, EmployeeService employeeService){
-
-		employeeService.deleteEmployee(id);
-	}
+//	public void showSingleEmployee (EmployeeRepository employeeRepository, String id){
+//		Optional <Employee> employee = employeeRepository.findById(id);
+//		if (employee.isPresent()){
+//			System.out.println(employee.get().getEmail());
+//		}
+//		else {
+//			new EmployeeNotFoundException(id);
+//		}
+//
+//	}
+//
+//	public void addNewEmployee(Employee employee, EmployeeService employeeService){
+//		employeeService.addEmployee(employee);
+//	}
+//
+//	public void updateEmployee(EmployeeRepository employeeRepository, EmployeeService employeeService){
+//
+//	}
+//
+//	public void deleteEmployee(String id, EmployeeService employeeService){
+//
+//		employeeService.deleteEmployee(id);
+//	}
 
 }
 

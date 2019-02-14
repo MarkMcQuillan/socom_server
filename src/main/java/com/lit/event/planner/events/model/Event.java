@@ -5,84 +5,83 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 // TODO: Modify to be an entity
 // TODO: Extend with required columns/properties
 
 @Entity
 @Table(name = "event")
-//@Data
-
+@Data
+@AllArgsConstructor
 @NoArgsConstructor
 public class Event implements Serializable {
 
-     public Event(String title, String locale, double guestFee, String date, String info) {
+     public Event(String title, String locale, Date date, String info, double guestFee) {
+
           this.title = title;
           this.locale = locale;
-          this.guestFee = guestFee;
           this.date = date;
           this.info = info;
-     }
-
-     @Id
-     @Column (name = "event_id")
-     public int getID() {
-          return ID;
-     }
-     public void setID(int ID) {
-          this.ID = ID;
-     }
-
-     @Column (name="eventTitle")
-     public String getTitle() {
-          return title;
-     }
-     public void setTitle(String title) {
-          this.title = title;
-     }
-
-     @Column(name="eventLocale")
-     public String getLocale() {
-          return locale;
-     }
-     public void setLocale(String locale) {
-          this.locale = locale;
-     }
-
-     @Column(name="eventGuestFee")
-     public double getGuestFee() {
-          return guestFee;
-     }
-     public void setGuestFee(double guestFee) {
           this.guestFee = guestFee;
      }
 
-     @Column(name="eventDate")
-     public String getDate() {
-          return date;
-     }
-     public void setDate(String date) {
-          this.date = date;
-     }
+//     @Id
+//     @Column (name = "event_id")
+//     public int getID() {
+//          return ID;
+//     }
+//     public void setID(int ID) {
+//          this.ID = ID;
+//     }
+//
+//     @Column (name="event_title")
+//     public String getTitle() {
+//          return title;
+//     }
+//     public void setTitle(String title) {
+//          this.title = title;
+//     }
+//
+//     @Column(name="event_locale")
+//     public String getLocale() {
+//          return locale;
+//     }
+//     public void setLocale(String locale) {
+//          this.locale = locale;
+//     }
+//
+//     @Column(name="event_guest_fee")
+//     public double getGuestFee() {
+//          return guestFee;
+//     }
+//     public void setGuestFee(double guestFee) {
+//          this.guestFee = guestFee;
+//     }
+//
+//     @Column(name="event_date")
+//     public Date getDate() {
+//          return date;
+//     }
+//     public void setDate(Date date) {
+//          this.date = date;
+//     }
+//
+//     @Column(name="event_info")
+//     public String getInfo() {
+//          return info;
+//     }
+//     public void setInfo(String info) {
+//          this.info = info;
+//     }
 
-     @Column(name="eventInfo")
-     public String getInfo() {
-          return info;
-     }
-     public void setInfo(String info) {
-          this.info = info;
-     }
 
-
-     private int ID;
-     private String title;
-     private String locale;
-     private double guestFee;
-     private String date;
-     private String info;
+     private @Id() @Column(name="event_id") @GeneratedValue(strategy = GenerationType.IDENTITY) int id;
+     private @Column(name="event_title") String title;
+     private @Column(name="event_locale") String locale;
+     private @Column(name="event_guest_fee") double guestFee;
+     private @Column(name="event_date") Date date;
+     private @Column(name="event_info") String info;
 }

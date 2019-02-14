@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -27,6 +28,8 @@ public class EventService {
             return events;
         }
 
+
+
         //return specified event
         public Optional<Event> getEvent(int id) {
             return eventRepository.findById(id);
@@ -45,7 +48,6 @@ public class EventService {
 
         //delete event
         public void deleteEvent(int id){
-
             eventRepository.deleteById(id);
         }
 
